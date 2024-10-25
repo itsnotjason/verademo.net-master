@@ -31,7 +31,7 @@ jobs:
         ### SCANNING: Optional fields
         polaris_application_name: 'verademoNET'
         polaris_project_name: 'verademoNET'
-        project_directory: ${{ github.workspace }}/Verademo-Dotnet/
+        project_directory: ${{ github.workspace }}/Verademo-Dotnet
         #coverity_config_path: ${{ github.workspace }}/Verademo-Dotnet/coverity.yml
         coverity_build_command: dotnet msbuild /t:Restore;Clean Verademo-dotnet.csproj
         coverity_clean_command: dotnet msbuild /t:Restore;Build Verademo-dotnet.csproj
