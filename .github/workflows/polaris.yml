@@ -44,6 +44,7 @@ jobs:
           
         ### Signature scan
         #polaris_test_sca_type: "SCA-SIGNATURE"
+        include_diagnostics: true
     - name: Polaris PR Scan
       if: ${{ github.event_name == 'pull_request' }}
       uses: synopsys-sig/synopsys-action@v1.13.0
