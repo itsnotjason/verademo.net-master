@@ -29,8 +29,8 @@ jobs:
         polaris_application_name: 'verademoNET'
         polaris_project_name: 'verademoNET'
         polaris_prComment_enabled: 'true'
-        polaris_reports_sarif_create: 'true'
-        polaris_upload_sarif_report: 'true'
+        polaris_reports_sarif_create: 'false'
+        polaris_upload_sarif_report: 'false'
         github_token: ${{ secrets.GITHUB_TOKEN }}
 #    - name: Save Logs
 #      if: always()
