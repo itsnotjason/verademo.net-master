@@ -32,7 +32,7 @@ jobs:
         polaris_application_name: 'verademoNET'
         polaris_project_name: 'verademoNET'
         project_directory: ${{ github.workspace }}/Verademo-Dotnet/
-        coverity_config_path: ${{ github.workspace }}/Verademo-Dotnet/coverity.yml
+        #coverity_config_path: ${{ github.workspace }}/Verademo-Dotnet/coverity.yml
         coverity_build_command: dotnet msbuild /t:Restore;Clean Verademo-dotnet.csproj
         coverity_clean_command: dotnet msbuild /t:Restore;Build Verademo-dotnet.csproj
           
@@ -45,4 +45,25 @@ jobs:
         polaris_upload_sarif_report: false
           
         ### Signature scan
-        polaris_test_sca_type: "SCA-SIGNATURE"
+        #polaris_test_sca_type: "SCA-SIGNATURE"
+    - name: Polaris PR Scan
+      if: ${{ github.event_name == 'pull_request' }}
+      uses: synopsys-sig/synopsys-action@v1.13.0
+      with:
+        polaris_server_url: ${{ vars.POLARIS_SERVERURL }}
+        polaris_access_token: ${{ secrets.POLARIS_ACCESSTOKEN }}
+        polaris_application_name: 'verademoNET'
+        polaris_project_name: 'verademoNET'
+        polaris_assessment_types: "SCA,SAST"
+        # project_directory: ${{ vars.PROJECT_DIRECTORY }}
+        ### Uncomment below configuration for source code upload 
+        # polaris_assessment_mode: "SOURCE_UPLOAD"
+        # project_source_archive: ${{ vars.PROJECT_SOURCE_ARCHIVE }}
+        # project_source_excludes: ${{ vars.PROJECT_SOURCE_EXCLUDES }} # Accepts Multiple Values
+        # project_source_preserveSymLinks: true
+        ### Below configuration is used to enable feedback from Polaris security testing as pull request comment
+        polaris_prComment_enabled: true 
+        github_token: ${{ secrets.GITHUB_TOKEN }} 
+        # Mandatory when polaris_prComment_enabled is set to 'true'
+        ### Uncomment below configuration if Synopsys Bridge diagnostic files needs to be uploaded
+        # include_diagnostics: true
