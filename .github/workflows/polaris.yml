@@ -31,8 +31,8 @@ jobs:
         ### SCANNING: Optional fields
         polaris_application_name: 'verademoNET'
         polaris_project_name: 'verademoNET'
-        project_directory: ${{ vars.PROJECT_DIRECTORY }}
-        coverity_config_path: /Users/Config/coverity.yml
+        project_directory: ${{ github.workspace }}/Verademo-Dotnet/
+        coverity_config_path: ${{ github.workspace }}/Verademo-Dotnet/coverity.yml
           
         ### PULL REQUEST COMMENTS: Uncomment below to enable
         polaris_prComment_enabled: true 
