@@ -1,0 +1,8 @@
+capture:
+  build:
+    clean-command: dotnet msbuild /t:Restore;Clean Verademo-dotnet.csproj
+    build-command: dotnet msbuild /t:Restore;Build Verademo-dotnet.csproj
+analyze:
+  checkers:
+    webapp-security:
+      enabled: true
