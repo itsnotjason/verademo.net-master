@@ -18,7 +18,6 @@ jobs:
       with:
         java-version: 17
         distribution: microsoft
-        cache: maven
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2
     - name: Polaris Scan
