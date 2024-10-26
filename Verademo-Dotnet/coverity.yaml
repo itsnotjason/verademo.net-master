@@ -1,7 +1,7 @@
 capture:
   build:
-    clean-command: dotnet msbuild /t:Restore;Clean ${{ github.workspace }}/Verademo-dotnet.csproj
-    build-command: dotnet msbuild /t:Restore;Build ${{ github.workspace }}/Verademo-dotnet.csproj
+    clean-command: dotnet msbuild /t:Restore;Clean Verademo-dotnet.csproj
+    build-command: dotnet msbuild /t:Restore;Build Verademo-dotnet.csproj
 analyze:
   checkers:
     webapp-security:
