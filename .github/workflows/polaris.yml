@@ -39,6 +39,6 @@ jobs:
     #    polaris_upload_sarif_report: 'true'
     #    github_token: ${{ secrets.GITHUB_TOKEN }}
     #    project_directory: ${{ github.workspace }}\Verademo-Dotnet
-        coverity_build_command: .\MSBuild.exe $Env:GITHUB_WORKSPACE\Verademo-dotnet.sln
+        coverity_build_command: MSBuild $Env:GITHUB_WORKSPACE\Verademo-dotnet.sln
         coverity_clean_command: NuGet restore
     
