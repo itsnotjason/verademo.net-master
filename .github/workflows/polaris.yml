@@ -22,8 +22,7 @@ jobs:
       uses: actions/checkout@v1
     - name: Build DotNET35
       run: |
-          NuGet restore
-          dotnet msbuild /t:Restore;Build Verademo-dotnet.sln    
+          dotnet msbuild /t:Restore; Verademo-dotnet.sln    
     #- name: Polaris Scan
     #  uses: synopsys-sig/synopsys-action@v1.13.0
     #  with:
