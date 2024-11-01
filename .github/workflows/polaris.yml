@@ -16,14 +16,15 @@ jobs:
       with:
         java-version: 17
         distribution: microsoft
-    - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v2
+    #- name: Add msbuild to PATH
+    #  uses: microsoft/setup-msbuild@v2
     - name: checkout
       uses: actions/checkout@v1
     - name: Build DotNET35
       run: |
           NuGet restore
-          dotnet msbuild Verademo-dotnet.sln    
+          cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
+          .\MSBuild.exe $Env:GITHUB_WORKSPACE\Verademo-dotnet.sln    
     #- name: Polaris Scan
     #  uses: synopsys-sig/synopsys-action@v1.13.0
     #  with:
