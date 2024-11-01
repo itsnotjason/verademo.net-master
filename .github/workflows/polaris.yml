@@ -18,16 +18,22 @@ jobs:
         distribution: microsoft
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v2
-    - name: Polaris Scan
-      uses: synopsys-sig/synopsys-action@v1.13.0
-      with:
-        polaris_server_url: ${{ vars.POLARIS_SERVERURL }}
-        polaris_access_token: ${{ secrets.POLARIS_ACCESSTOKEN }}
-        polaris_assessment_types: 'SAST,SCA'
-        polaris_application_name: 'verademoNET'
-        polaris_project_name: 'verademoNET'
-        polaris_prComment_enabled: 'true'
-        polaris_reports_sarif_create: 'true'
-        polaris_upload_sarif_report: 'true'
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        project_directory: ${{ github.workspace }}\Verademo-Dotnet
+    - name: checkout
+      uses: actions/checkout@v1
+    - name: Build DotNET35
+      run: |
+          NuGet restore
+          dotnet msbuild /t:Restore;Build Verademo-dotnet.sln    
+    #- name: Polaris Scan
+    #  uses: synopsys-sig/synopsys-action@v1.13.0
+    #  with:
+    #    polaris_server_url: ${{ vars.POLARIS_SERVERURL }}
+    #    polaris_access_token: ${{ secrets.POLARIS_ACCESSTOKEN }}
+    #    polaris_assessment_types: 'SAST,SCA'
+    #    polaris_application_name: 'verademoNET'
+    #    polaris_project_name: 'verademoNET'
+    #    polaris_prComment_enabled: 'true'
+    #    polaris_reports_sarif_create: 'true'
+    #   polaris_upload_sarif_report: 'true'
+    #    github_token: ${{ secrets.GITHUB_TOKEN }}
+    #    project_directory: ${{ github.workspace }}\Verademo-Dotnet
