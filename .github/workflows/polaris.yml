@@ -33,7 +33,7 @@ jobs:
     #    polaris_reports_sarif_create: 'true'
     #    polaris_upload_sarif_report: 'true'
     #    github_token: ${{ secrets.GITHUB_TOKEN }}
-    #    project_directory: ${{ github.workspace }}\Verademo-Dotnet
+        project_directory: ${{ github.workspace }}\Verademo-Dotnet
         blackduck_search_depth: 5
         coverity_build_command: MSBuild Verademo-dotnet.sln
         coverity_clean_command: NuGet restore
