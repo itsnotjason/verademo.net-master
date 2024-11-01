@@ -16,16 +16,11 @@ jobs:
       with:
         java-version: 17
         distribution: microsoft
-    #- name: Add msbuild to PATH
-    #  uses: microsoft/setup-msbuild@v2
     - name: checkout
       uses: actions/checkout@v1
     - name: Build DotNET35
       run: |
-          set PATH=%PATH%;"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"
-    #      NuGet restore
-    #      cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\";
-    #      .\MSBuild.exe $Env:GITHUB_WORKSPACE\Verademo-dotnet.sln    
+          set PATH=%PATH%;"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"   
     - name: Polaris Scan
       uses: synopsys-sig/synopsys-action@v1.13.0
       with:
@@ -39,6 +34,7 @@ jobs:
     #    polaris_upload_sarif_report: 'true'
     #    github_token: ${{ secrets.GITHUB_TOKEN }}
     #    project_directory: ${{ github.workspace }}\Verademo-Dotnet
+        blackduck_search_depth: 5
         coverity_build_command: MSBuild Verademo-dotnet.sln
         coverity_clean_command: NuGet restore
     
