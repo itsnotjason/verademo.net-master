@@ -18,7 +18,7 @@ jobs:
         distribution: microsoft
     - name: checkout
       uses: actions/checkout@v1
-    - name: Build DotNET35
+    - name: Set MSBUILD Path
       run: |
           set PATH=%PATH%;"C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin\"   
     - name: Polaris Scan
@@ -33,8 +33,7 @@ jobs:
         polaris_reports_sarif_create: 'true'
         polaris_upload_sarif_report: 'true'
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    #    blackduck_args: '--detect.diagnostic=true'
         blackduck_search_depth: 5
         coverity_build_command: MSBuild Verademo-dotnet.sln
         coverity_clean_command: NuGet restore
-    
+    #    blackduck_args: '--detect.diagnostic=true'
